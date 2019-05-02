@@ -9,7 +9,7 @@ class dictionary {
 public:
     dictionary();
     dictionary(int wordLen);
-    int getSize();
+    int getSize(string);
 private:
     int size;
     int wordLen;
