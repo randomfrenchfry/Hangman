@@ -1,7 +1,3 @@
-//
-// Created by Daniel Aguila on 2019-04-30.
-//
-
 #include "dictionary.h"
 
 dictionary::dictionary() {
@@ -13,11 +9,11 @@ dictionary::dictionary(int wordLen) {
 }
 int dictionary::getSize(){
     ifstream file;
-    file.open("/Users/danielaguila/Documents/Hangman/dictionary.txt");
-
+    file.open("/Users/victorrangel/Library/Mobile Documents/com~apple~CloudDocs/xcode/HW/Hangman/Hangman/dictionary.txt"); //change this 
+    
     string temp;
-    int cnt = 0;
-    while(file>> temp)
+    long int  cnt = 0;
+    while(getline(file,temp))
     {
         transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
         if(temp.length() == wordLen)
@@ -25,6 +21,6 @@ int dictionary::getSize(){
             cnt++;
         }
     }
-    this->size = cnt;
-    return size;
+    file.close();
+    return cnt;
 }
