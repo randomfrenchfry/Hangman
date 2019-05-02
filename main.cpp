@@ -101,7 +101,7 @@ int main() {
             cout<< "Enter dictionary or word Bank .txt file "<<endl;
             cin>>filename;
             
-            filename = "/Users/victorrangel/Library/Mobile Documents/com~apple~CloudDocs/xcode/HW/Hangman/Hangman/dictionary.txt";
+            //filename = "/Users/victorrangel/Library/Mobile Documents/com~apple~CloudDocs/xcode/HW/Hangman/Hangman/dictionary.txt";
             //dict.open(filename);
             hangman.readFile(filename);
             //dict.close();
