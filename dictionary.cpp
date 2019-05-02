@@ -7,9 +7,9 @@ dictionary::dictionary(int wordLen) {
     this->size = 0;
     this->wordLen = wordLen;
 }
-int dictionary::getSize(){
+int dictionary::getSize(string name){
     ifstream file;
-    file.open("/Users/victorrangel/Library/Mobile Documents/com~apple~CloudDocs/xcode/HW/Hangman/Hangman/dictionary.txt"); //change this 
+    file.open(name); //change this 
     
     string temp;
     long int  cnt = 0;
