@@ -45,14 +45,12 @@ bool Hangman::readFile()// if user enters wordlength of 5 dictionary only picks 
         return false;
     }
     string temp="";
-    int c = 0;
     while(getline(file,temp))
     {
         transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
         if(temp.length() == wordlength)
         {
             dictionary.push_back(temp);
-            c++;
         }
     }
     file.close();
@@ -67,7 +65,7 @@ bool Hangman::readFile()// if user enters wordlength of 5 dictionary only picks 
 int Hangman::record(string g)//records user guesses
 {
     guesses.push_back(g);
-    int c = 0;
+    int c = 0;//number of correct guesses
     if(g.length() == wordlength)
     {
         if(g == wordAnswer)
