@@ -58,10 +58,10 @@ void showResults(Hangman man,int correct)
         cout<<"You Lose."<<endl;
         
 }
-void tryFile(ifstream& file)
+void tryFile(bool res)
 {
     
-    if(!(file.is_open()))
+    if(res == false)
     {
         throw runtime_error("File does not exist. Please Enter full path of .txt file");
     }
@@ -95,15 +95,19 @@ int main() {
             cin>>maxG;
             cout<<endl;
             
-            Hangman hangman(wordLen,maxG);
             ifstream dict;
             string filename;
-            cout<< "Enter dictionary or word Bank .txt file "<<endl;
-            cin>>filename;
-            
+            cout<< "Enter dictionary.txt file (Please include full path) "<<endl;
+            cin.ignore();
+            getline(cin,filename);
+            //cout<<filename<<endl;
             //filename = "/Users/victorrangel/Library/Mobile Documents/com~apple~CloudDocs/xcode/HW/Hangman/Hangman/dictionary.txt";
+            //cout<<filename<<endl;
+            Hangman hangman(wordLen,maxG,filename);
+            
             //dict.open(filename);
-            hangman.readFile(filename);
+            bool res = hangman.readFile();
+            tryFile(res);
             //dict.close();
             int correct = playGame(hangman);
             showResults(hangman,correct);

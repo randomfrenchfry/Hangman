@@ -12,10 +12,10 @@ class Hangman: public dictionary
 {
 public:
     Hangman();//bs
-    Hangman(int,int);// length of word, number of guesses
+    Hangman(int,int,string);// length of word, number of guesses
     //~Hangman();// destructor for the dictionary
     string pattern(int); //---a--
-    void readFile(string); //returns a string of guesses made by the user
+    bool readFile(); //returns a string of guesses made by the user
     int record(string); //records the guess in a
     int guessesLeft(); //returns the number of guessesLeft numGuess--
     //void pickAnswer(); //picks random word answer
@@ -27,6 +27,7 @@ private:
     int numGuesses;
     int wordlength;
     int long dictionSize;
+    string fileName;
     string wordAnswer;//random word chosen
     string strGuesses; //guesses output string
     string outPattern; //-a- cat pattern

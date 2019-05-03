@@ -12,15 +12,16 @@ Hangman::Hangman()
     strGuesses = "";
     outPattern = "";
 }
-Hangman::Hangman(int length,int numOfGuess):dictionary(dictionSize),guesses(numOfGuess)
+Hangman::Hangman(int length,int numOfGuess,string name):dictionary(dictionSize),guesses(numOfGuess)
 {
     wordlength = length+1; //end line character is included for each word
     numGuesses = numOfGuess;
     wordAnswer = "";
     strGuesses = "";
     outPattern = "";
+    fileName = name;
     class dictionary dict(wordlength);
-    dictionSize = (dict.getSize());
+    dictionSize = (dict.getSize(fileName));
 }
 
 string Hangman::pattern(int in)
@@ -30,16 +31,19 @@ string Hangman::pattern(int in)
         outPattern+="-";
     if(wordAnswer.find(guesses.back())!=-1 && in>0)
     {
-        outPattern.replace(in-1, guesses.back().length(), guesses.back());
+        outPattern.replace(wordAnswer.find(guesses.back()), guesses.back().length(), guesses.back());
     }
     return outPattern;
 }
 
-void Hangman::readFile(string filename)// if user enters wordlength of 5 dictionary only picks words of length 5.
+bool Hangman::readFile()// if user enters wordlength of 5 dictionary only picks words of length 5.
 {
     fstream file;
-    file.open(filename);
-    
+    file.open(fileName);
+    if(!(file.is_open()))
+    {
+        return false;
+    }
     string temp="";
     int c = 0;
     while(getline(file,temp))
@@ -57,6 +61,7 @@ void Hangman::readFile(string filename)// if user enters wordlength of 5 diction
     int tempN = rand() % (dictionSize);
     wordAnswer = dictionary.at(tempN);
     //cout << wordAnswer;
+    return true;
     
 }
 
