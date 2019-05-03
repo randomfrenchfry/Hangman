@@ -56,11 +56,10 @@ bool Hangman::readFile()// if user enters wordlength of 5 dictionary only picks 
         }
     }
     file.close();
+    
     srand(time(NULL));
-    //cout<<"Size: " << dictionSize;
     int tempN = rand() % (dictionSize);
     wordAnswer = dictionary.at(tempN);
-    //cout << wordAnswer;
     return true;
     
 }
@@ -96,17 +95,7 @@ int Hangman::guessesLeft()
 {
     return numGuesses;
 }
-//void Hangman::pickAnswer()//picks a random word from the dictionary
-//{
-//    srand(time(NULL));
-//    class dictionary dict(wordlength);
-//    //cout<<dict.getSize();
-//    long int temp = rand() % (dict.getSize()); ------
-//    for(int i =0;i<=temp;i++){
-//        dictionary++;
-//    }
-//    cout << *dictionary;
-//}
+
 string Hangman::getAnswer()
 {
     return wordAnswer;
