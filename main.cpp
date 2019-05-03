@@ -2,9 +2,6 @@
 #include "dictionary.h"
 int playGame(Hangman man)
 {
-    //functions to play the game
-    //man.pickAnswer();
-    //cout<<man.getAnswer();
     int correct = 0;
     int index = 0;
     while(man.guessesLeft()>0 && (man.pattern(index).find("-")!=-1))
@@ -47,7 +44,7 @@ int playGame(Hangman man)
         index++;
     }
     return correct;
-    //Game Design
+    //Game format
 }
 void showResults(Hangman man,int correct)
 {
@@ -100,25 +97,21 @@ int main() {
             cout<< "Enter dictionary.txt file (Please include full path) "<<endl;
             cin.ignore();
             getline(cin,filename);
-            //cout<<filename<<endl;
-            //filename = "/Users/victorrangel/Library/Mobile Documents/com~apple~CloudDocs/xcode/HW/Hangman/Hangman/dictionary.txt";
-            //cout<<filename<<endl;
+           
             Hangman hangman(wordLen,maxG,filename);
             
-            //dict.open(filename);
+        
             bool res = hangman.readFile();
             tryFile(res);
-            //dict.close();
             int correct = playGame(hangman);
             showResults(hangman,correct);
-            //delete [] hangman;
         }
         catch (runtime_error &excpt)
         {
             cout<< excpt.what()<<endl;
             
         }
-        cout << endl << "Enter any key for another game ( or 'q' to quit ): "; //maybe
+        cout << endl << "Enter any key for another game ( or 'q' to quit ): "; 
         cin>>userRes;
     }
 }
